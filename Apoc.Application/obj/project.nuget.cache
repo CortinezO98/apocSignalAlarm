@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "92mv5l+jHA8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\JCortinezO\\Documents\\GitHub\\apocSignalAlarm\\Apoc.Application\\Apoc.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\JCortinezO\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

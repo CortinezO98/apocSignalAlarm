@@ -1,0 +1,15 @@
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\bin\Debug\net9.0\Apoc.Application.deps.json
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\bin\Debug\net9.0\Apoc.Application.dll
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\bin\Debug\net9.0\Apoc.Application.pdb
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\bin\Debug\net9.0\Apoc.Domain.dll
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\bin\Debug\net9.0\Apoc.Domain.pdb
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.csproj.AssemblyReference.cache
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.AssemblyInfoInputs.cache
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.AssemblyInfo.cs
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.csproj.CoreCompileInputs.cache
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.App.AC89DAE5.Up2Date
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.dll
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\refint\Apoc.Application.dll
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.pdb
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\ref\Apoc.Application.dll
