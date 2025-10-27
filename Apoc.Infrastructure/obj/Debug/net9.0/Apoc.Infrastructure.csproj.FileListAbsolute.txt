@@ -15,3 +15,4 @@ C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Deb
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\refint\Apoc.Infrastructure.dll
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.pdb
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\ref\Apoc.Infrastructure.dll
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.sourcelink.json

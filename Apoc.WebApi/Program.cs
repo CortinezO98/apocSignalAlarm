@@ -28,8 +28,12 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.MapSwaggerUI();
+    app.MapOpenApi(); 
+    app.UseSwaggerUI(opt =>
+    {
+        opt.SwaggerEndpoint("/openapi/v1.json", "APOC Signal Alarm v1");
+        opt.RoutePrefix = "swagger"; 
+    });
 }
 
 

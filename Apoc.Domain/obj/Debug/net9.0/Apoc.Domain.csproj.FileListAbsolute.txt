@@ -9,3 +9,4 @@ C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\refint\Apoc.Domain.dll
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.pdb
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\ref\Apoc.Domain.dll
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.sourcelink.json

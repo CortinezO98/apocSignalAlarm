@@ -13,3 +13,4 @@ C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\refint\Apoc.Application.dll
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.pdb
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\ref\Apoc.Application.dll
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Application\obj\Debug\net9.0\Apoc.Application.sourcelink.json
