@@ -1,9 +1,9 @@
-import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
 
-export const appConfig: ApplicationConfig = {
+export const config: ApplicationConfig = {
   providers: [
     provideServerRendering(),
-    provideExperimentalZonelessChangeDetection()
+    provideZonelessChangeDetection()
   ]
 };
