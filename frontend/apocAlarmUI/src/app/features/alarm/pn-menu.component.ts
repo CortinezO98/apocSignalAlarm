@@ -7,7 +7,7 @@ import { BreadcrumbsComponent } from '../../core/shared/breadcrumbs.component';
 @Component({
   selector:'app-pn-menu',
   standalone:true,
-  imports:[NgFor, RouterLink, BreadcrumbsComponent],
+  imports:[RouterLink, BreadcrumbsComponent],
   templateUrl:'./pn-menu.component.html',
   styleUrls:['./pn-menu.component.scss']
 })
