@@ -5,8 +5,8 @@ C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.AssemblyInfoInputs.cache
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.AssemblyInfo.cs
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.csproj.CoreCompileInputs.cache
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.sourcelink.json
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.dll
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\refint\Apoc.Domain.dll
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.pdb
 C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\ref\Apoc.Domain.dll
-C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Domain\obj\Debug\net9.0\Apoc.Domain.sourcelink.json

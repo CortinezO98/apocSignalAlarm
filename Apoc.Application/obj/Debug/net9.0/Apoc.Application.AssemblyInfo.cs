@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Apoc.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5973ad109f24a70a6aaecd0c3ea844b89cdfd667")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c315ca246231020728f0b209e4b146fa34d5989")]
 [assembly: System.Reflection.AssemblyProductAttribute("Apoc.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Apoc.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

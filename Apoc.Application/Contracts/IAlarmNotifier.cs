@@ -1,9 +1,8 @@
-using Apoc.Domain;
-
 namespace Apoc.Application.Contracts;
 
-public interface IAlarmNotifier
+public interface IClaimNotifier
 {
-    Task AlarmCreatedAsync(Alarm alarm, CancellationToken ct);
-    Task AlarmAcknowledgedAsync(Guid id, CancellationToken ct);
+    Task StatusChangedAsync(Guid claimId, string status, string? docket, CancellationToken ct);
+    Task DocUploadedAsync(Guid claimId, Guid docId, string docType, CancellationToken ct);
+    Task DocValidatedAsync(Guid claimId, Guid docId, string status, CancellationToken ct);
 }

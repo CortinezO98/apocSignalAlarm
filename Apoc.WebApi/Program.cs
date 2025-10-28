@@ -4,6 +4,7 @@ using Apoc.Infrastructure.OTP;
 using Apoc.Infrastructure.Sequencing;
 using Apoc.Infrastructure.Services;
 using Apoc.WebApi.Hubs;
+using Apoc.WebApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,12 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
-
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("apocpn"));
 builder.Services.AddSignalR();
 
 // DI
 builder.Services.AddScoped<IClaimService, ClaimService>();
+builder.Services.AddSingleton<IClaimNotifier, SignalRClaimNotifier>();
 builder.Services.AddSingleton<IDocketGenerator, SimpleDocketGenerator>();
 builder.Services.AddSingleton<IOtpSender, ConsoleOtpSender>();
 
@@ -36,6 +37,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.MapSwaggerUI();
 }
+
+
 
 app.UseCors("ng");
 app.MapControllers();

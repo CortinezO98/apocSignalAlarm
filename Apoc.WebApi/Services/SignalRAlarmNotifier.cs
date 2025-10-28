@@ -1,33 +1,17 @@
 using Apoc.Application.Contracts;
-using Apoc.Domain;
 using Apoc.WebApi.Hubs;
 using Microsoft.AspNetCore.SignalR;
 
 namespace Apoc.WebApi.Services;
 
-public sealed class SignalRAlarmNotifier : IAlarmNotifier
+public sealed class SignalRClaimNotifier(IHubContext<ClaimHub> hub) : IClaimNotifier
 {
-    private readonly IHubContext<AlarmHub> _hub;
+    public Task StatusChangedAsync(Guid claimId, string status, string? docket, CancellationToken ct) =>
+        hub.Clients.Group(claimId.ToString()).SendAsync("statusChanged", new { claimId, status, docket }, ct);
 
-    public SignalRAlarmNotifier(IHubContext<AlarmHub> hub)
-    {
-        _hub = hub;
-    }
+    public Task DocUploadedAsync(Guid claimId, Guid docId, string docType, CancellationToken ct) =>
+        hub.Clients.Group(claimId.ToString()).SendAsync("docUploaded", new { claimId, docId, docType }, ct);
 
-    public async Task AlarmCreatedAsync(Alarm alarm, CancellationToken ct)
-    {
-        await _hub.Clients.All.SendAsync("alarmCreated", new {
-            alarm.Id,
-            alarm.Title,
-            alarm.Description,
-            Severity = alarm.Severity.ToString(),
-            alarm.CreatedAt,
-            alarm.Acknowledged
-        }, ct);
-    }
-
-    public async Task AlarmAcknowledgedAsync(Guid id, CancellationToken ct)
-    {
-        await _hub.Clients.All.SendAsync("alarmAcknowledged", id, ct);
-    }
+    public Task DocValidatedAsync(Guid claimId, Guid docId, string status, CancellationToken ct) =>
+        hub.Clients.Group(claimId.ToString()).SendAsync("docValidated", new { claimId, docId, status }, ct);
 }

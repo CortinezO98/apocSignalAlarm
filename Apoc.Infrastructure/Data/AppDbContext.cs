@@ -6,34 +6,29 @@ namespace Apoc.Infrastructure.Data;
 
 public sealed class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt){}
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
     public DbSet<Claim> Claims => Set<Claim>();
     public DbSet<ClaimDocument> Documents => Set<ClaimDocument>();
-}
 
-// Generador de Consecutivos
-namespace Apoc.Infrastructure.Sequencing;
-public interface IDocketGenerator { Task<string> NextAsync(string insurer, string line, CancellationToken ct); }
-
-public sealed class SimpleDocketGenerator : IDocketGenerator
-{
-    private static long _seq = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-    public Task<string> NextAsync(string insurer, string line, CancellationToken ct)
-        => Task.FromResult($"{insurer}-{line}-{Interlocked.Increment(ref _seq):D8}");
-}
-
-
-// Envio de OTP
-using Microsoft.Extensions.Logging;
-
-namespace Apoc.Infrastructure.OTP;
-public interface IOtpSender { Task SendAsync(string channel, string address, string code, CancellationToken ct); }
-
-public sealed class ConsoleOtpSender(ILogger<ConsoleOtpSender> logger) : IOtpSender
-{
-    public Task SendAsync(string channel, string address, string code, CancellationToken ct)
+    protected override void OnModelCreating(ModelBuilder b)
     {
-        logger.LogInformation("OTP via {Channel} to {Address}: {Code}", channel, address, code);
-        return Task.CompletedTask;
+        b.Entity<Claim>(e =>
+        {
+            e.HasKey(x => x.Id);
+            e.Property(x => x.ClaimantDocNumber).IsRequired().HasMaxLength(30);
+            e.Property(x => x.VictimDocNumber).IsRequired().HasMaxLength(30);
+            e.Property(x => x.DocketNumber).HasMaxLength(64);
+            e.Property(x => x.Status).HasConversion<int>();
+        });
+
+        b.Entity<ClaimDocument>(e =>
+        {
+            e.HasKey(x => x.Id);
+            e.Property(x => x.DocType).IsRequired().HasMaxLength(50);
+            e.Property(x => x.FileName).IsRequired().HasMaxLength(200);
+            e.Property(x => x.Status).HasConversion<int>();
+            e.HasIndex(x => x.ClaimId);
+        });
     }
 }
