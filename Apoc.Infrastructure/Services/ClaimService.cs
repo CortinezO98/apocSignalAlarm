@@ -84,7 +84,8 @@ public sealed class ClaimService : IClaimService
         if (!ok)
         {
             var tries = otpData.tries + 1;
-            var locked = tries >= 3 ? DateTime.UtcNow.AddMinutes(10) : null;
+            DateTime? locked = tries >= 3 ? DateTime.UtcNow.AddMinutes(10) : null;
+
 
             _otp[id] = (otpData.code, otpData.expires, tries, locked);
             _log.LogWarning("OTP inválido ({Tries}/3) para {ClaimId}", tries, id);

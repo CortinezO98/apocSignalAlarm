@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FileDropDirective } from '@/app/shared/directives/file-drop.directive';
+import { FileDropDirective } from '@/app/core/shared/directives/file-drop.directive';
 import { ClaimService } from '@/app/core/claim.service';
 import { ToastService } from '@/app/core/toast.service';
 
@@ -33,8 +33,10 @@ import { ToastService } from '@/app/core/toast.service';
 })
 export class UploaderComponent {
   @Output() filed = new EventEmitter<string>();
+
   private svc = inject(ClaimService);
   private toast = inject(ToastService);
+
   uploads = signal<{ name: string; progress: number }[]>([]);
 
   onPick(e: Event) {
@@ -42,31 +44,43 @@ export class UploaderComponent {
     if (files) this.handleFiles(files);
   }
 
-  onDrop(files: FileList) { this.handleFiles(files); }
+  onDrop(files: FileList) {
+    this.handleFiles(files);
+  }
 
-  handleFiles(files: FileList) {
-    [...files].forEach(file => {
-      if (!file.name.endsWith('.pdf')) { this.toast.error('Solo se permiten PDF'); return; }
-      if (file.size > 10 * 1024 * 1024) { this.toast.error('Archivo >10 MB'); return; }
+  async handleFiles(files: FileList) {
+    for (const file of Array.from(files)) {
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        this.toast.error('Solo se permiten PDF');
+        continue;
+      }
+
+      if (file.size > 10 * 1024 * 1024) {
+        this.toast.error('Archivo >10 MB');
+        continue;
+      }
 
       const item = { name: file.name, progress: 0 };
       this.uploads.update(u => [...u, item]);
 
-      this.svc.upload(file, 'GEN').subscribe(ev => {
-        if (ev.type === 'progress') {
-          item.progress = ev.progress;
-          this.uploads.update(u => [...u]);
-        } else if (ev.type === 'done') {
-          item.progress = 100;
-          this.uploads.update(u => [...u]);
-        }
-      });
-    });
+      try {
+        await this.svc.upload(file, 'GEN'); 
+        item.progress = 100;
+        this.uploads.update(u => [...u]);
+      } catch {
+        this.toast.error('Error subiendo documento');
+      }
+    }
   }
 
+
   async file() {
-    const docket = await this.svc.fileClaim();
-    this.toast.success('Radicado correctamente');
-    this.filed.emit(docket);
+    try {
+      const docket = await this.svc.file(); 
+      this.toast.success('Radicado correctamente');
+      this.filed.emit(docket);
+    } catch {
+      this.toast.error('Error al radicar la reclamación');
+    }
   }
 }
