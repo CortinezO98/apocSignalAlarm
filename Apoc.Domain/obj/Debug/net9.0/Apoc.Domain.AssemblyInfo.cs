@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Apoc.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+489aed40fff583d2abc1550f0a2bce7a5c4336bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb7ae3f3f75d074fc35c96ee0438a1ca835a8e7e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Apoc.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Apoc.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
