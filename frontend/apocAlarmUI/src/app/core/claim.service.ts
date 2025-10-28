@@ -26,7 +26,7 @@ export class ClaimService {
   error   = computed(() => this._error());
 
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
-    // detecta si el código se ejecuta en el navegador o en el servidor
+
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -46,7 +46,6 @@ export class ClaimService {
       this._claimId.set(claim.id);
       this._status.set(claim.status ?? 'OtpPending');
 
-      // Solo conectar al Hub si estamos en el navegador
       if (this.isBrowser) {
         await this.connectHub(claim.id);
       }
@@ -161,7 +160,6 @@ export class ClaimService {
     await this.hub.start();
     await this.hub.invoke('JoinClaim', claimId);
 
-    //  proteger sessionStorage
     if (this.isBrowser) {
       sessionStorage.setItem('claimId', claimId);
     }
