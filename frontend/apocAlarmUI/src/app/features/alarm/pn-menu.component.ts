@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { CATALOG } from '../../core/catalog';
-import { BreadcrumbsComponent } from '../../shared/breadcrumbs.component';
+import { BreadcrumbsComponent } from '../../core/shared/breadcrumbs.component';
 
 @Component({
   selector:'app-pn-menu',
@@ -12,9 +12,9 @@ import { BreadcrumbsComponent } from '../../shared/breadcrumbs.component';
   styleUrls:['./pn-menu.component.scss']
 })
 export class PnMenuComponent {
-  ramoKey = this.route.snapshot.paramMap.get('ramo') as any;
-  ramo = (CATALOG.mundial.ramos as any)[this.ramoKey]; // MVP sobre Mundial
-  amparos = Object.entries(this.ramo.amparos);
+  private route = inject(ActivatedRoute);
+  ramoKey = this.route.snapshot.paramMap.get('ramo') as string;
+  ramo = (CATALOG as any).mundial.ramos[this.ramoKey]; 
+  amparos = Object.entries(this.ramo?.amparos ?? {});
   tab:'radica'|'consulta' = 'radica';
-  constructor(private route:ActivatedRoute){}
 }

@@ -1,3 +1,4 @@
+import { tap } from 'rxjs/operators';
 import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
 export const errorMapperInterceptor: HttpInterceptorFn = (req, next) => next(req).pipe(
   tap({ error: (e) => {

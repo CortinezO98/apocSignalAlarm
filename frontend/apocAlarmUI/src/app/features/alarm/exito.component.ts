@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,6 +8,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls:['./exito.component.scss']
 })
 export class ExitoComponent {
-  docket = this.route.snapshot.paramMap.get('docket');
-  constructor(private route:ActivatedRoute){}
+  private route = inject(ActivatedRoute);
+  docket = this.route.snapshot.paramMap.get('docket') ?? '';
 }

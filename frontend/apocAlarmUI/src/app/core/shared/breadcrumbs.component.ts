@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { RouterLink, NgFor } from '@angular/common';
+import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector:'app-breadcrumbs',
@@ -8,6 +9,6 @@ import { RouterLink, NgFor } from '@angular/common';
   templateUrl:'./breadcrumbs.component.html',
   styleUrls:['./breadcrumbs.component.scss']
 })
-export class BreadcrumbsComponent {
-  @Input() items: {label:string, url?:string}[] = [];
+export class BreadcrumbsComponent{
+  @Input() items:{label:string, url?:string}[] = [];
 }

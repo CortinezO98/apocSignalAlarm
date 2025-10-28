@@ -12,10 +12,14 @@ import { BreadcrumbsComponent } from '../../core/shared/breadcrumbs.component';
   styleUrls:['./client-menu.component.scss']
 })
 export class ClientMenuComponent {
-  insurerKey = this.route.snapshot.paramMap.get('insurer')!;
-  ramoKey    = this.route.snapshot.paramMap.get('ramo')!;
-  data = CATALOG as any;
+  private route = new ActivatedRoute(); 
+  insurerKey = (this.route.snapshot.paramMap.get('insurer') ?? '') as string;
+  ramoKey    = (this.route.snapshot.paramMap.get('ramo') ?? '') as string;
+
+
+  data:any = CATALOG;
   insurer = this.data[this.insurerKey];
-  ramo    = this.insurer?.ramos[this.ramoKey];
-  constructor(private route:ActivatedRoute){}
+  ramo    = this.insurer?.ramos?.[this.ramoKey];
+
+  constructor(route: ActivatedRoute) { this.route = route; }
 }
