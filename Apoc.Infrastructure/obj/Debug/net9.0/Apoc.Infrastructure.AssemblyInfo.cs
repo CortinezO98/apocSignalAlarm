@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Apoc.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cec522f9fe9105e6507ac2d56aa9ed48d5c99782")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f765a763b084370cc9ca1e3789b2e8dcda52fc2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Apoc.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Apoc.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
