@@ -1,19 +1,24 @@
 using Apoc.Application.Contracts;
-using Apoc.Infrastructure;
+using Apoc.Infrastructure.Data;
+using Apoc.Infrastructure.OTP;
+using Apoc.Infrastructure.Sequencing;
+using Apoc.Infrastructure.Services;
 using Apoc.WebApi.Hubs;
-using Apoc.WebApi.Services; 
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
+
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("apocpn"));
 builder.Services.AddSignalR();
 
-builder.Services.AddSingleton<IAlarmRepository, AlarmRepositoryInMemory>();
-builder.Services.AddSingleton<IAlarmNotifier, SignalRAlarmNotifier>(); 
-builder.Services.AddHostedService<AlarmGeneratorService>();
+// DI
+builder.Services.AddScoped<IClaimService, ClaimService>();
+builder.Services.AddSingleton<IDocketGenerator, SimpleDocketGenerator>();
+builder.Services.AddSingleton<IOtpSender, ConsoleOtpSender>();
 
 builder.Services.AddCors(opt =>
 {
@@ -28,18 +33,12 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi(); 
-    app.UseSwaggerUI(opt =>
-    {
-        opt.SwaggerEndpoint("/openapi/v1.json", "APOC Signal Alarm v1");
-        opt.RoutePrefix = "swagger"; 
-    });
+    app.MapOpenApi();
+    app.MapSwaggerUI();
 }
 
-
 app.UseCors("ng");
-
 app.MapControllers();
-app.MapHub<AlarmHub>("/hubs/alarm");
+app.MapHub<ClaimHub>("/hubs/claim");
 
 app.Run();
