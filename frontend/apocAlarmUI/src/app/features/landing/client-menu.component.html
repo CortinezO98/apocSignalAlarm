@@ -1,0 +1,20 @@
+<app-breadcrumbs [items]="[
+  {label:'Inicio', url:'/'},
+  {label: insurer?.nombre || 'Cliente'},
+  {label: ramo?.nombre || 'Ramo'}
+]"></app-breadcrumbs>
+
+<section class="panel">
+  <h2>{{insurer?.nombre}} · {{ramo?.nombre}}</h2>
+  <div class="grid">
+    <a class="card" [routerLink]="['/pn/menu', ramoKey]">
+      <div class="icon">🧑‍⚕️</div>
+      <div><h3>Recepción (Persona Natural)</h3><p>Radicación y consulta de reclamaciones.</p></div>
+      <span class="arrow">▸</span>
+    </a>
+    <div class="card disabled" title="Próximamente">
+      <div class="icon">🏢</div>
+      <div><h3>Recepción (Persona Jurídica)</h3><p>Disponibile en siguiente iteración.</p></div>
+    </div>
+  </div>
+</section>

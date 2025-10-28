@@ -1,0 +1,29 @@
+<app-breadcrumbs [items]="[
+  {label:'Radicación de Reclamaciones'},
+  {label:'Persona natural'},
+  {label: ramo?.nombre || 'Ramo'}
+]"></app-breadcrumbs>
+
+<div class="tabs">
+  <button [class.active]="tab==='radica'"  (click)="tab='radica'">Radica</button>
+  <button [class.active]="tab==='consulta'" (click)="tab='consulta'">Consulta</button>
+</div>
+
+<section *ngIf="tab==='radica'" class="amparos">
+  <h3>Selecciona el Amparo que quieres radicar</h3>
+  <div class="grid">
+    <article class="card" *ngFor="let a of amparos">
+      <div class="left"><div class="icon">🧩</div><h4>{{a[1].nombre}}</h4></div>
+      <div class="right">
+        <button class="expand" [title]="a[1].desc">⛶</button>
+        <a class="primary" [routerLink]="['/pn/radica', a[0]]">Iniciar</a>
+      </div>
+    </article>
+  </div>
+  <div class="footer-actions"><a class="ghost" routerLink="/">Volver</a></div>
+</section>
+
+<section *ngIf="tab==='consulta'" class="consulta">
+  <h3>Consulta el estado de tu reclamación</h3>
+  <a class="primary" routerLink="/pn/consulta">Ir a consulta</a>
+</section>

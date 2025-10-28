@@ -1,0 +1,17 @@
+<h3>Consulta de reclamaciones</h3>
+<form [formGroup]="f" (ngSubmit)="consultar()">
+  <input placeholder="ID reclamante" formControlName="claimant">
+  <input placeholder="ID víctima" formControlName="victim">
+  <input placeholder="No. radicado" formControlName="docket">
+  <button type="submit">Consultar</button>
+</form>
+<p class="err" *ngIf="error">{{error}}</p>
+
+<div *ngIf="resultado">
+  <h4>En qué estado se encuentra mi radicación</h4>
+  <p>{{resultado.status}}</p>
+  <h4>Información de tu solicitud</h4>
+  <!-- pinta campos principales -->
+  <h4>Documentos</h4>
+  <!-- link Ver documento (constancia) -->
+</div>

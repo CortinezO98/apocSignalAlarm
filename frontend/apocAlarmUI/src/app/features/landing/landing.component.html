@@ -1,0 +1,35 @@
+<app-breadcrumbs [items]="[{label:'Inicio', url:'/'}]"></app-breadcrumbs>
+
+<header class="topbar">
+  <img src="/assets/iq-logo.svg" alt="IQ Outsourcing" class="logo">
+  <nav class="nav">
+    <a routerLink="/" class="link">Inicio</a>
+    <div class="menu">
+      <button class="btn">Clientes y Servicios ▾</button>
+      <div class="panel">
+        <ul class="level1">
+          <li *ngFor="let kv1 of (catalog | keyvalue)">
+            <button class="item" (mouseenter)="toggle1(kv1.key)">{{kv1.value.nombre}} ▸</button>
+            <div class="flyout" *ngIf="open1===kv1.key">
+              <ul class="level2">
+                <li *ngFor="let kv2 of (kv1.value.ramos | keyvalue)">
+                  <button class="item" (mouseenter)="toggle2(kv2.key)">{{kv2.value.nombre}} ▸</button>
+                  <div class="flyout2" *ngIf="open2===kv2.key">
+                    <a class="item" [routerLink]="['/cliente', kv1.key, kv2.key]">Recepción (PN) ▸</a>
+                    <a class="item muted" (click)="$event.preventDefault()">Recepción (PJ) ▸</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="/assets/hero-salud.jpg" alt="" class="bg">
+  <div class="cta"><h1>Soluciones de Negocio y <br> Valor empresarial</h1></div>
+  <button class="chatbot">CHATBOT</button>
+</section>
