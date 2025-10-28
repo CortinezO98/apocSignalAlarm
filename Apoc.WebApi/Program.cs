@@ -15,7 +15,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("apocpn"));
 builder.Services.AddSignalR();
 
-// DI
+
 builder.Services.AddScoped<IClaimService, ClaimService>();
 builder.Services.AddSingleton<IClaimNotifier, SignalRClaimNotifier>();
 builder.Services.AddSingleton<IDocketGenerator, SimpleDocketGenerator>();
@@ -35,7 +35,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.MapSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/openapi/v1.json", "APOC PN v1");
+        c.RoutePrefix = "swagger"; 
+    });
 }
 
 
