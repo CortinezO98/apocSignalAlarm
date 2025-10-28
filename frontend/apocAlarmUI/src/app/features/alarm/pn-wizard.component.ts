@@ -108,13 +108,14 @@ export class PnWizardComponent {
   private _resultado = signal<any|null>(null);
   resultado = computed(()=>this._resultado());
 
-  // bindings servicio
-  claimId = this.svc.claimId;
-  status  = this.svc.status;
-  docket  = this.svc.docket;
-  docs    = this.svc.docs;
-  loading = this.svc.loading;
-  error   = this.svc.error;
+  // getters 
+  get claimId() { return this.svc.claimId; }
+  get status()  { return this.svc.status; }
+  get docket()  { return this.svc.docket; }
+  get docs()    { return this.svc.docs; }
+  get loading() { return this.svc.loading; }
+  get error()   { return this.svc.error; }
+
 
   docsList = computed(()=> Object.entries(this.docs()).map(([_,v]) => v));
 
@@ -128,13 +129,6 @@ export class PnWizardComponent {
   async validate(){ await this.svc.validateOtp(this.otp); }
   pick(e:any){ const f:File = e.target.files?.[0]; if (f) this.file = f; }
   async upload(){ if(!this.file) return; await this.svc.upload(this.file, this.docType); this.file=undefined; }
-  async fileClaim(){
-    const docket = await this.svc.file();
-    alert('Radicado: '+docket);
-  }
-
-  async consultar(){
-    const r = await this.svc.find(this.qClaimant, this.qVictim, this.qDocket);
-    this._resultado.set(r);
-  }
+  async fileClaim(){ const docket = await this.svc.file(); alert('Radicado: '+docket); }
+  async consultar(){ const r = await this.svc.find(this.qClaimant, this.qVictim, this.qDocket); this._resultado.set(r); }
 }
