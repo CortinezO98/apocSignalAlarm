@@ -1,12 +1,17 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormsModule } from '@angular/forms';               
 import { ClaimService } from '../../core/claim.service';
 
 @Component({
   selector: 'app-pn-wizard',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,                                             
+  ],
   template: `
   <section class="container">
     <h2>Portal PN – Recepción & Seguimiento (demo)</h2>
@@ -81,7 +86,7 @@ import { ClaimService } from '../../core/claim.service';
         <div *ngIf="status()==='DocsValidating' || status()==='Filed'" class="card">
           <h4>3) Documentos</h4>
           <input type="file" (change)="pick($event)" />
-          <select [(ngModel)]="docType">
+          <select [(ngModel)]="docType">        <!-- ✅ ya funciona ngModel -->
             <option value="Factura">Factura</option>
             <option value="HistoriaClinica">Historia clínica</option>
             <option value="Cedula">Cédula</option>
@@ -139,22 +144,11 @@ import { ClaimService } from '../../core/claim.service';
   `]
 })
 export class PnWizardComponent {
-  constructor(private fb: FormBuilder, private svc: ClaimService) {
-    this.svc.restoreFromSession();
-  }
 
   tab = signal<'wizard' | 'consulta'>('wizard');
 
-  // FormGroups reactivos
-  claimForm: FormGroup = this.fb.group({
-    claimantDoc: ['', [Validators.required, Validators.pattern(/^\d{6,12}$/)]],
-    victimDoc: ['', [Validators.pattern(/^\d{6,12}$/)]],
-    phone: ['', [Validators.pattern(/^\d{10}$/)]],
-  });
-
-  otpForm: FormGroup = this.fb.group({
-    code: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
-  });
+  claimForm!: FormGroup;        
+  otpForm!: FormGroup;
 
   docType = 'Factura';
   file?: File;
@@ -163,6 +157,21 @@ export class PnWizardComponent {
   private _resultado = signal<any | null>(null);
   resultado = computed(() => this._resultado());
 
+  constructor(private fb: FormBuilder, private svc: ClaimService) {
+    this.svc.restoreFromSession();
+
+    this.claimForm = this.fb.group({
+      claimantDoc: ['', [Validators.required, Validators.pattern(/^\d{6,12}$/)]],
+      victimDoc: ['', [Validators.pattern(/^\d{6,12}$/)]],
+      phone: ['', [Validators.pattern(/^\d{10}$/)]],
+    });
+
+    this.otpForm = this.fb.group({
+      code: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
+    });
+  }
+
+  // Getters reactivos
   get claimId() { return this.svc.claimId; }
   get status() { return this.svc.status; }
   get docket() { return this.svc.docket; }
