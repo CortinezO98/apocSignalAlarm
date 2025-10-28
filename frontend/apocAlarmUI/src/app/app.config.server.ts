@@ -1,9 +1,11 @@
-import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
+import { appConfig as browserConfig } from './app.config';
 import { provideServerRendering } from '@angular/platform-server';
 
-export const config: ApplicationConfig = {
+export const appConfig: ApplicationConfig = {
+  ...browserConfig,
   providers: [
-    provideServerRendering(),
-    provideZonelessChangeDetection()
-  ]
+    ...(browserConfig.providers ?? []),
+    provideServerRendering(), 
+  ],
 };

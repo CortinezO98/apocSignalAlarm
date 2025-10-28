@@ -119,7 +119,6 @@ export class ClaimService {
 
     await this.hub.start();
     await this.hub.invoke('JoinClaim', claimId);
-    // Mantener id en session por si recarga:
     sessionStorage.setItem('claimId', claimId);
   }
 
@@ -127,5 +126,5 @@ export class ClaimService {
     const id = sessionStorage.getItem('claimId');
     if (id) this.connectHub(id).then(() => this._claimId.set(id));
   }
-  //#endregion
+
 }
