@@ -6,6 +6,6 @@ export const appConfig: ApplicationConfig = {
   ...browserConfig,
   providers: [
     ...(browserConfig.providers ?? []),
-    provideServerRendering(), 
+    provideServerRendering(),
   ],
 };
