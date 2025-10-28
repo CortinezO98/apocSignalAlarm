@@ -13,6 +13,7 @@ using FluentValidation;
 using Polly;
 using Polly.Extensions.Http;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers()

@@ -25,10 +25,20 @@ public sealed class ClaimsController : ControllerBase
     public async Task<IActionResult> Start([FromBody] StartClaimDto dto, CancellationToken ct)
     {
         var validation = await _validator.ValidateAsync(dto, ct);
-        if (!validation.IsValid)
-            return ValidationProblem(validation.ToDictionary());
 
-        // DTO → Dominio
+        // Si la validación falla, devolvemos errores detallados
+        if (!validation.IsValid)
+        {
+            var errors = validation.Errors
+                .GroupBy(e => e.PropertyName)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Select(e => e.ErrorMessage).ToArray()
+                );
+
+            return ValidationProblem(new ValidationProblemDetails(errors));
+        }
+
         var claim = new Claim
         {
             ClaimantDocNumber = dto.ClaimantDocNumber,
@@ -62,7 +72,6 @@ public sealed class ClaimsController : ControllerBase
     public Task<string> File(Guid id, CancellationToken ct) =>
         _claimSvc.FileAsync(id, ct);
 
-
     // GET /api/claims/find
     [HttpGet("find")]
     public Task<Claim?> Find(
@@ -82,6 +91,7 @@ public sealed class ClaimsController : ControllerBase
     {
         if (file is null || file.Length == 0)
             return BadRequest("Archivo vacío.");
+
         if (!file.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
             return BadRequest("Solo se permiten archivos PDF.");
 

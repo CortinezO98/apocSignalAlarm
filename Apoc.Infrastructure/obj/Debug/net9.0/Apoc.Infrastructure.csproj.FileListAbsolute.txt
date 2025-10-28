@@ -1,0 +1,6 @@
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.AssemblyInfo.cs
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\JCortinezO\Documents\GitHub\apocSignalAlarm\Apoc.Infrastructure\obj\Debug\net9.0\Apoc.Infrastructure.sourcelink.json

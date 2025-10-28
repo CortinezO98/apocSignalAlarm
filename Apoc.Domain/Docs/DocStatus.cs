@@ -2,8 +2,9 @@ namespace Apoc.Domain.Docs
 {
     public enum DocStatus
     {
-        Pending = 0,
-        Valid = 1,
-        Rejected = 2 
+        Uploaded = 0,       
+        Validating = 1,    
+        Valid = 2,         
+        Rejected = 3        
     }
 }

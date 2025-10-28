@@ -286,6 +286,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.8.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -293,6 +297,14 @@
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[9.0.10, )"
+            },
+            "Microsoft.Extensions.Http.Polly": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

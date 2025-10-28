@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Apoc.Domain")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Apoc.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cec522f9fe9105e6507ac2d56aa9ed48d5c99782")]
-[assembly: System.Reflection.AssemblyProductAttribute("Apoc.Domain")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Apoc.Domain")]
+[assembly: System.Reflection.AssemblyProductAttribute("Apoc.Application")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Apoc.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
